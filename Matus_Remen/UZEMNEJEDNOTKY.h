@@ -1,0 +1,2 @@
+#pragma once
+enum UZEMNEJEDNOTKY { STAT, KRAJ, OKRES, OBEC };

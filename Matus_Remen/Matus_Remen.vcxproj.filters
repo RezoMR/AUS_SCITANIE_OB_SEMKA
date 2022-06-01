@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\structures">
+      <UniqueIdentifier>{9cf44f23-33f4-48d2-88ce-7dbd2734420d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\vector">
+      <UniqueIdentifier>{4dd01e66-304b-4d57-806a-f7d9019c242a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\tree">
+      <UniqueIdentifier>{b6179104-1a3f-483d-9db3-056d30042060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\table">
+      <UniqueIdentifier>{2b147439-a62d-4074-861e-0ab8fd555d72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\stack">
+      <UniqueIdentifier>{cd4dd79b-887f-466d-a7ee-5804bb63354f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\queue">
+      <UniqueIdentifier>{d512f3af-63a6-43f8-a8dd-b533ccdc542e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\priority_queue">
+      <UniqueIdentifier>{ea24a01e-c10a-46be-b783-c027dedaa143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\matrix">
+      <UniqueIdentifier>{25e5c461-b1be-469b-a754-378d85270c0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\list">
+      <UniqueIdentifier>{cd506f2d-d1f4-4c5d-9ea7-7afbc7bc4d35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\array">
+      <UniqueIdentifier>{0a56d0ca-58ed-419b-88fe-6a84cb3cca17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\_logger">
+      <UniqueIdentifier>{12f4a642-91d2-4dde-8be0-21e443f67d23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CSVSubory">
+      <UniqueIdentifier>{ea775420-e7ef-4c8b-8f0b-0029f954002d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\structures\table\sorting">
+      <UniqueIdentifier>{a3ca5234-3af6-4872-93cb-6fe6d7bb1e26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Kriteria">
+      <UniqueIdentifier>{58ac25eb-4554-469a-a2a7-9023f7249b44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Enumy">
+      <UniqueIdentifier>{86682d7b-1be6-4cec-aeec-b18a25e2875e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Filter">
+      <UniqueIdentifier>{048ed614-51d6-4bc2-8900-e6b1c1276cac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\structures\_logger\file_log_consumer.cpp">
+      <Filter>Source Files\structures\_logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\structures\_logger\logger.cpp">
+      <Filter>Source Files\structures\_logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\structures\vector\vector.cpp">
+      <Filter>Source Files\structures\vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\structures\structure.cpp">
+      <Filter>Source Files\structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\structures\utils.cpp">
+      <Filter>Source Files\structures</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterUJVekovaSkupinaPodiel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CSVCitac.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\_logger\file_log_consumer.h">
+      <Filter>Source Files\structures\_logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\_logger\logger.h">
+      <Filter>Source Files\structures\_logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\array\array.h">
+      <Filter>Source Files\structures\array</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\list\array_list.h">
+      <Filter>Source Files\structures\list</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\list\double_linked_list.h">
+      <Filter>Source Files\structures\list</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\list\linked_list.h">
+      <Filter>Source Files\structures\list</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\list\list.h">
+      <Filter>Source Files\structures\list</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\matrix\coherent_matrix.h">
+      <Filter>Source Files\structures\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\matrix\incoherent_matrix.h">
+      <Filter>Source Files\structures\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\matrix\matrix.h">
+      <Filter>Source Files\structures\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\priority_queue\heap.h">
+      <Filter>Source Files\structures\priority_queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\priority_queue\priority_queue.h">
+      <Filter>Source Files\structures\priority_queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\priority_queue\priority_queue_limited_sorted_array_list.h">
+      <Filter>Source Files\structures\priority_queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\priority_queue\priority_queue_linked_list.h">
+      <Filter>Source Files\structures\priority_queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\priority_queue\priority_queue_list.h">
+      <Filter>Source Files\structures\priority_queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\priority_queue\priority_queue_sorted_array_list.h">
+      <Filter>Source Files\structures\priority_queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\priority_queue\priority_queue_two_lists.h">
+      <Filter>Source Files\structures\priority_queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\priority_queue\priority_queue_unsorted_array_list.h">
+      <Filter>Source Files\structures\priority_queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\queue\explicit_queue.h">
+      <Filter>Source Files\structures\queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\queue\implicit_queue.h">
+      <Filter>Source Files\structures\queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\queue\queue.h">
+      <Filter>Source Files\structures\queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\stack\explicit_stack.h">
+      <Filter>Source Files\structures\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\stack\implicit_stack.h">
+      <Filter>Source Files\structures\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\stack\stack.h">
+      <Filter>Source Files\structures\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\binary_search_tree.h">
+      <Filter>Source Files\structures\table</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\hash_table.h">
+      <Filter>Source Files\structures\table</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\linked_table.h">
+      <Filter>Source Files\structures\table</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sequence_table.h">
+      <Filter>Source Files\structures\table</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorted_sequence_table.h">
+      <Filter>Source Files\structures\table</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\table.h">
+      <Filter>Source Files\structures\table</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\treap.h">
+      <Filter>Source Files\structures\table</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\unsorted_sequence_table.h">
+      <Filter>Source Files\structures\table</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorting\bubble_sort.h">
+      <Filter>Source Files\structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorting\heap_sort.h">
+      <Filter>Source Files\structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorting\insert_sort.h">
+      <Filter>Source Files\structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorting\merge_sort.h">
+      <Filter>Source Files\structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorting\quick_sort.h">
+      <Filter>Source Files\structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorting\radix_sort.h">
+      <Filter>Source Files\structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorting\select_sort.h">
+      <Filter>Source Files\structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorting\shell_sort.h">
+      <Filter>Source Files\structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorting\shuffle.h">
+      <Filter>Source Files\structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\table\sorting\sort.h">
+      <Filter>Source Files\structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\tree\binary_tree.h">
+      <Filter>Source Files\structures\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\tree\k_way_tree.h">
+      <Filter>Source Files\structures\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\tree\multi_way_tree.h">
+      <Filter>Source Files\structures\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\tree\tree.h">
+      <Filter>Source Files\structures\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\vector\vector.h">
+      <Filter>Source Files\structures\vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\data_item.h">
+      <Filter>Source Files\structures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\heap_monitor.h">
+      <Filter>Source Files\structures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\structure.h">
+      <Filter>Source Files\structures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\structure_iterator.h">
+      <Filter>Source Files\structures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\types.h">
+      <Filter>Source Files\structures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\structures\utils.h">
+      <Filter>Source Files\structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Kriterium.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="KriteriumUJ.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="KriteriumUJNazov.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="UZEMNEJEDNOTKY.h">
+      <Filter>Source Files\Enumy</Filter>
+    </ClInclude>
+    <ClInclude Include="KriteriumUJPrislusnost.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="KriteriumUJVzdelaniePocet.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="KriteriumUJTyp.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="VZDELANIE_enum.h">
+      <Filter>Source Files\Enumy</Filter>
+    </ClInclude>
+    <ClInclude Include="VzdelanieUJ.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VekUJ.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Priradovanie.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KriteriumUJVzdelaniePodiel.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="KriteriumUJVekPocet.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="KriteriumUJVekPodiel.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="KriteriumUjVekovaSkupinaPocet.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="EVS.h">
+      <Filter>Source Files\Enumy</Filter>
+    </ClInclude>
+    <ClInclude Include="KriteriumUJVekovaSkupinaPodiel.h">
+      <Filter>Source Files\Kriteria</Filter>
+    </ClInclude>
+    <ClInclude Include="bodoveVyhladavanie.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FNazov.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="FUJTyp.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="KompozitnyFilter.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="Filter.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterAND.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="Triedenie.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterSKriteriom.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterSHodnotou.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="Filtrovanie.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterUJVzdelaniePocet.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterInterval.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterUJVzdelaniePodiel.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterUJPrislusnost.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterUJVekovaSkupinaPocet.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterUJVekovaSkupinaPodiel.h">
+      <Filter>Source Files\Filter</Filter>
+    </ClInclude>
+    <ClInclude Include="UzemnaJednotka.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\CSVSubory\kraje.csv">
+      <Filter>Source Files\CSVSubory</Filter>
+    </None>
+    <None Include="..\CSVSubory\obce.csv">
+      <Filter>Source Files\CSVSubory</Filter>
+    </None>
+    <None Include="..\CSVSubory\okresy.csv">
+      <Filter>Source Files\CSVSubory</Filter>
+    </None>
+    <None Include="..\CSVSubory\vek.csv">
+      <Filter>Source Files\CSVSubory</Filter>
+    </None>
+    <None Include="..\CSVSubory\vzdelanie.csv">
+      <Filter>Source Files\CSVSubory</Filter>
+    </None>
+  </ItemGroup>
+</Project>

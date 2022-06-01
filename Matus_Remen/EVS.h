@@ -1,0 +1,6 @@
+#pragma once
+enum EVS_ENUM {
+	PREDPRODUKTIVNI,
+	PRODUKTIVNI,
+	POPRODUKTIVNI
+};
