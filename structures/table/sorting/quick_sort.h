@@ -23,4 +23,8 @@ namespace structures
 		throw std::logic_error("Not implemented yet!");
 	}
 
+
+
+
+
 }

@@ -208,10 +208,142 @@ public:
 			break;
 		case 3:
 			//triedenie
-			cout << "Zacinam triedenie: ";
-			
-			t->tried(*f->FiltrujDoTriedenia(vsetko, pomocnaBodoveVyh));
+			cout << "Zacinam triedenie: " << "\n";
+			structures::UnsortedSequenceTable<std::string, UzemnaJednotka*>* tr = f->FiltrujDoTriedenia(vsetko, pomocnaBodoveVyh);
+			cout << "Vyberte ako chcete zoradit: " << "\n";
+			cout << "Zostupne_____1 " << "\n";
+			cout << "Vzostupne____2 " << "\n";
+			bool vybranySposob = false;
+			int ako;
+			cin >> ako;
+			if (ako == 2) {
+				vybranySposob = true;
+			}
+			cout << "Vyberte, podla coho chcete triedit: " << "\n";
+			cout << "Podla vybraných filtrov: " << "\n";
+			cout << "Nazov______________1" << "\n";
+			cout << "VekSkupinaPocet___________2" << "\n";
+			cout << "VzdelaniePocet_____3" << "\n";
+			cout << "VzdelaniePodiel____4 " << "\n";
 
+			int vybranie = 0;
+			cin >> vybranie;
+			switch (vybranie) {
+			case 1:
+				t->sort(tr, vyber, KriteriumUJNazov(), 0, tr->size());
+				break;
+			case 2:
+				EVS_ENUM vekKtorePocet;
+				cout << "Vyberte podla ktorej vekovej skupiny: " << "\n";
+				cout << "PREDPRODUKTIVNY___1:" << "\n";
+				cout << "PRODUKTIVNY_______2:" << "\n";
+				cout << "POPRODUKTIVNY_____3:" << "\n";
+
+				int hodnota = 0;
+				cin >> hodnota;
+				switch (hodnota) {
+				case 1:
+					vekKtorePocet = PREDPRODUKTIVNI;
+					break;
+				case 2:
+					vekKtorePocet = PRODUKTIVNI;
+					break;
+				case 3:
+					vekKtorePocet = POPRODUKTIVNI;
+					break;
+				}
+				t->sort(tr, vyber, KriteriumUJVekovaSkupinaPocet(vekKtorePocet), 0, tr->size())
+				break;
+
+			case 3:
+				VZDELANIE_ENUM vzdelanieKtorePocet;
+				cout << "Zadajte typ vzdelania:" << "\n";
+				cout << "Vyberte Vzdelanie:" << "\n";
+				cout << "BEZUKONCENEHO____1" << "\n";
+				cout << "ZAKLADNE_________2" << "\n";
+				cout << "UCNOVSKE_________3" << "\n";
+				cout << "STREDNE__________4" << "\n";
+				cout << "VYSSIE___________5" << "\n";
+				cout << "VYSOKOSKOLSKE____6" << "\n";
+				cout << "BEZVZDELANIA_____7" << "\n";
+				cout << "NEZISTENE________8" << "\n";
+				int hodnota = 0;
+				cin >> hodnota;
+				switch (hodnota) {
+				case 1:
+					vzdelanieKtorePocet = BEZUKONCENEHO;
+					break;
+				case 2:
+					vzdelanieKtorePocet = ZAKLADNE;
+					break;
+				case 3:
+					vzdelanieKtorePocet = UCNOVSKE;
+					break;
+				case 4:
+					vzdelanieKtorePocet = STREDNE;
+					break;
+				case 5:
+					vzdelanieKtorePocet = VYSSIE;
+					break;
+				case 6:
+					vzdelanieKtorePocet = VYSOKOSKOLSKE;
+					break;
+				case 7:
+					vzdelanieKtorePocet = BEZVZDELANIA;
+					break;
+				case 8:
+					vzdelanieKtorePocet = NEZISTENE;
+					break;
+				}
+
+				t->sort(tr, vyber, KriteriumUJVzdelaniePocet(vzdelanieKtorePocet), 0, tr->size());
+				break;
+			case 4:
+				VZDELANIE_ENUM vzdelanieKtorePocet;
+				cout << "Zadajte typ vzdelania:" << "\n";
+				cout << "Vyberte Vzdelanie:" << "\n";
+				cout << "BEZUKONCENEHO____1" << "\n";
+				cout << "ZAKLADNE_________2" << "\n";
+				cout << "UCNOVSKE_________3" << "\n";
+				cout << "STREDNE__________4" << "\n";
+				cout << "VYSSIE___________5" << "\n";
+				cout << "VYSOKOSKOLSKE____6" << "\n";
+				cout << "BEZVZDELANIA_____7" << "\n";
+				cout << "NEZISTENE________8" << "\n";
+				int hodnota = 0;
+				cin >> hodnota;
+				switch (hodnota) {
+				case 1:
+					vzdelanieKtorePocet = BEZUKONCENEHO;
+					break;
+				case 2:
+					vzdelanieKtorePocet = ZAKLADNE;
+					break;
+				case 3:
+					vzdelanieKtorePocet = UCNOVSKE;
+					break;
+				case 4:
+					vzdelanieKtorePocet = STREDNE;
+					break;
+				case 5:
+					vzdelanieKtorePocet = VYSSIE;
+					break;
+				case 6:
+					vzdelanieKtorePocet = VYSOKOSKOLSKE;
+					break;
+				case 7:
+					vzdelanieKtorePocet = BEZVZDELANIA;
+					break;
+				case 8:
+					vzdelanieKtorePocet = NEZISTENE;
+					break;
+				}
+
+				t->sort(tr, vyber, KriteriumUJVzdelaniePodiel(vzdelanieKtorePocet), 0, tr->size());
+				break;
+			}
+			
+			delete tr;
 			break;
 		}
 

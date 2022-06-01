@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "../structures/array/array.h"
+#include "EVS.h"
 
 using namespace std;
 class VekUJ {
@@ -168,6 +169,34 @@ public:
 			pocet += VSzeny->at(ktora);
 			pocet += VSmuzi->at(ktora);
 			return pocet;
+	}
+
+	int vratZadanuEVS(EVS_ENUM z) {
+		int pocet;
+		switch (z) {
+		case PREDPRODUKTIVNI:
+			pocet = 0;
+			pocet += VSzeny->at(0);
+			pocet += VSmuzi->at(0);
+			return pocet;
+			break;
+		case PRODUKTIVNI:
+			pocet = 0;
+			pocet += VSzeny->at(1);
+			pocet += VSmuzi->at(1);
+			return pocet;
+			break;
+		case POPRODUKTIVNI:
+		     pocet = 0;
+			pocet += VSzeny->at(2);
+			pocet += VSmuzi->at(2);
+			return pocet;
+			break;
+
+
+		}
+
+
 	}
 
 	
