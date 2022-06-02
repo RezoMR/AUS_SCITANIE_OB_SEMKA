@@ -28,21 +28,21 @@ private:
 public:
 
 	template<typename K, typename T, typename H>
-	void sort(structures::UnsortedSequenceTable<K, T>& tabulka, bool vzostupne, Kriterium<H, T>& krit, int min, int max) {
-		    T obj = tabulka->getItematIndex((min + max) / 2).accessData();
-			H pivot = krit.evaluate(obj);
+	void sort(structures::UnsortedSequenceTable<K, T*>& tabulka, bool vzostupne, Kriterium<T, H>& krit, int min, int max) {
+		    T* obj = tabulka.getItemAtIndex((min + max) / 2).accessData();
+			H pivot = krit.evaluate(*obj);
 			int lavy = min;
 			int pravy = max;
-
+			
 			if (vzostupne)
 			{
 				do
 				{
-					while (krit->evaluate(tabulka->getItemAtIndex(left).accessData()) < pivot)
+					while (krit.evaluate(*tabulka.getItemAtIndex(lavy).accessData()) < pivot)
 					{
 						lavy++;
 					}
-					while (krit->evaluate(tabulka->getItemAtIndex(pravy).accessData()) < pivot)
+					while (krit.evaluate(*tabulka.getItemAtIndex(pravy).accessData()) > pivot)
 					{
 						pravy--;
 					}
@@ -53,19 +53,19 @@ public:
 					}
 				} while (lavy <= pravy);
 				if (min< pravy) {
-					sort(tabulka, min, pravy, krit, vzostupne);
+					sort(tabulka,true , krit,min,pravy);
 				}
 				if (min < max) {
-					sort(tabulka, lavy, max, krit, vzostupne);
+					sort(tabulka, true, krit,lavy, max);
 				}
 
 			} else { //ak nie je bool paVzostupne true tak -> zostupne
 				do {
 
-					while (krit.evaluate(tabulka->getItemAtIndex(lavy).accessData()) > pivot) {
+					while (krit.evaluate(*tabulka.getItemAtIndex(lavy).accessData()) > pivot) {
 						lavy++;
 					}
-					while (krit->evaluate(tabulka.getItemAtIndex(pravy).accessData()) < pivot) {
+					while (krit.evaluate(*tabulka.getItemAtIndex(pravy).accessData()) < pivot) {
 						pravy++;
 					}
 					if (lavy <= pravy) {
@@ -75,10 +75,10 @@ public:
 					}
 				} while (lavy <= pravy);
 				if (min < pravy) {
-					sort(tabulka, min, pravy, krit, vzostupne);
+					sort(tabulka, false, krit,min, pravy);
 				}
 				if (lavy < max) {
-					sort(tabulka, lavy, max, krit, vzostupne);
+					sort(tabulka,false, krit,lavy, max);
 				}
 			}
 		}
