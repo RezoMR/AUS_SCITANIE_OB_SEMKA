@@ -30,6 +30,7 @@ public:
 		vek = new VekUJ();
 		vzdelanie = new VzdelanieUJ();
 	}
+
 	UzemnaJednotka() {
 	}
 	~UzemnaJednotka() {

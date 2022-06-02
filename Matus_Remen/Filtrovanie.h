@@ -12,10 +12,11 @@
 #include "FilterUJVzdelaniePocet.h"
 #include "FilterUJVzdelaniePodiel.h"
 #include "FilterUJVekovaSkupinaPocet.h"
-//#include "FilterUJVekovaSkupinaPodiel.h"
+#include "FilterUJVekovaSkupinaPodiel.h"
 
 
 #include "../structures/table/unsorted_sequence_table.h"
+#include "FilterUJVekovaSkupinaPodiel.h"
 
 
 using namespace std;
@@ -34,7 +35,7 @@ public:
 		bool vzpocet = false;
 		bool vzpodiel = false;
 		bool vspocet = false;
-		//bool vspodiel = false;
+		bool vspodiel = false;
 
 		FilterAND<UzemnaJednotka>* filtre = new FilterAND<UzemnaJednotka>();
 
@@ -83,14 +84,14 @@ public:
 				cout << "Filter VekovaSkupinaPocet_____5" << "\n";
 			}
 
-			/*
+			
 			if (vspodiel == true) {
 				cout << "Filter VekovaSkupinaPodiel____6   <-" << "\n";
 			}
 			else {
 				cout << "Filter VekovaSkupinaPodiel____6" << "\n";
 			}
-			*/
+			
 			cin >> vyber;
 
 			if (vyber == 1) {
@@ -108,10 +109,9 @@ public:
 			if (vyber == 5) {
 				vspocet = true;
 			}
-
-			/*if (vyber == 6) {
+			if (vyber == 6) {
 				vspodiel = true;
-			}*/
+			}
 		}
 
 
@@ -299,8 +299,12 @@ public:
 			FilterUJVekovaSkupinaPocet* VsPocet = new FilterUJVekovaSkupinaPocet(vekKtorePocet, VSMinimalnaPocet, VSMaximalnaPocet);
 			filtre->pridajFilter(VsPocet);
 		}
-		/*
+		
 		if (vspodiel == true) {
+			int VSMinimalnaPodiel;
+			int VSMaximalnaPodiel;
+			EVS_ENUM vekKtorePodiel;
+
 			cout << "Filter VekovaSkupinaPodiel" << "\n";
 			cout << "Zadajte minimalnu hodnotu:" << "\n";
 			cin >> VSMinimalnaPodiel;
@@ -323,10 +327,10 @@ public:
 				vekKtorePodiel = POPRODUKTIVNI;
 				break;
 			}
-			//FilterUJVekovaSkupinaPodiel* VsPodiel = new FilterUJVekovaSkupinaPodiel(vekKtorePodiel, VSMinimalnaPodiel, VSMaximalnaPodiel);
-			//filtre->pridajFilter(VsPodiel);
+			FilterUJVekovaSkupinaPodiel* VsPodiel = new FilterUJVekovaSkupinaPodiel(vekKtorePodiel, VSMinimalnaPodiel, VSMaximalnaPodiel);
+			filtre->pridajFilter(VsPodiel);
 		}
-		*/
+		
 
 		//finalny vypis
 		system("cls");
@@ -353,6 +357,19 @@ public:
 					cout << "Poproduktivny: " << KVSpocet->evaluate(*item->accessData()) << "\n";
 					delete KVSpocet;
 
+				}
+				if (vspodiel == true) {
+					cout << "--------------------------------" << "Vekove skupiny" << "\n";
+					KriteriumUJVekovaSkupinaPodiel* KVSpocet = new KriteriumUJVekovaSkupinaPodiel(PREDPRODUKTIVNI);
+					cout << "Predproduktivny: " << KVSpocet->evaluate(*item->accessData()) << "\n";
+					delete KVSpocet;
+					KVSpocet = new KriteriumUJVekovaSkupinaPodiel(PRODUKTIVNI);
+					cout << "Produktivny: " << KVSpocet->evaluate(*item->accessData()) << "\n";
+					delete KVSpocet;
+
+					KVSpocet = new KriteriumUJVekovaSkupinaPodiel(POPRODUKTIVNI);
+					cout << "Poproduktivny: " << KVSpocet->evaluate(*item->accessData()) << "\n";
+					delete KVSpocet;
 				}
 				if (vzpocet == true) {
 					KriteriumUJVzdelaniePocet* KVZPocet = new KriteriumUJVzdelaniePocet(BEZUKONCENEHO);
@@ -445,23 +462,6 @@ public:
 				}
 				cout << "########################################################" << "\n";
 			}
-
-
-			/*
-			if (vspodiel == true) {
-				KriteriumUJVekovaSkupinaPodiel* KVSpodiel = new KriteriumUJVekovaSkupinaPodiel(PREDPRODUKTIVNI);
-				KVSpodiel->evaluate(*item->accessData());
-				KVSpodiel = new KriteriumUJVekovaSkupinaPodiel(PRODUKTIVNI);
-				KVSpodiel->evaluate(*item->accessData());
-				KVSpodiel = new KriteriumUJVekovaSkupinaPodiel(POPRODUKTIVNI);
-				KVSpodiel->evaluate(*item->accessData());
-				cout << "--------------------------------" << "\n";
-				delete KVSpodiel;
-				KVSpodiel = nullptr;
-				cout << "--------------------------------" << "\n";
-			}
-			*/
-
 		}
 		delete filtre;
 	}
@@ -473,7 +473,7 @@ public:
 		bool vzpocet = false;
 		bool vzpodiel = false;
 		bool vspocet = false;
-		//bool vspodiel = false;
+		bool vspodiel = false;
 
 		FilterAND<UzemnaJednotka>* filtre = new FilterAND<UzemnaJednotka>();
 
@@ -522,14 +522,14 @@ public:
 				cout << "Filter VekovaSkupinaPocet_____5" << "\n";
 			}
 
-			/*
+			
 			if (vspodiel == true) {
 				cout << "Filter VekovaSkupinaPodiel____6   <-" << "\n";
 			}
 			else {
 				cout << "Filter VekovaSkupinaPodiel____6" << "\n";
 			}
-			*/
+			
 			cin >> vyber;
 
 			if (vyber == 1) {
@@ -548,9 +548,9 @@ public:
 				vspocet = true;
 			}
 
-			/*if (vyber == 6) {
+			if (vyber == 6) {
 				vspodiel = true;
-			}*/
+			}
 		}
 
 
@@ -738,8 +738,12 @@ public:
 			FilterUJVekovaSkupinaPocet* VsPocet = new FilterUJVekovaSkupinaPocet(vekKtorePocet, VSMinimalnaPocet, VSMaximalnaPocet);
 			filtre->pridajFilter(VsPocet);
 		}
-		/*
+		
 		if (vspodiel == true) {
+			int VSMinimalnaPodiel;
+			int VSMaximalnaPodiel;
+			EVS_ENUM vekKtorePodiel;
+
 			cout << "Filter VekovaSkupinaPodiel" << "\n";
 			cout << "Zadajte minimalnu hodnotu:" << "\n";
 			cin >> VSMinimalnaPodiel;
@@ -762,10 +766,10 @@ public:
 				vekKtorePodiel = POPRODUKTIVNI;
 				break;
 			}
-			//FilterUJVekovaSkupinaPodiel* VsPodiel = new FilterUJVekovaSkupinaPodiel(vekKtorePodiel, VSMinimalnaPodiel, VSMaximalnaPodiel);
-			//filtre->pridajFilter(VsPodiel);
+			FilterUJVekovaSkupinaPodiel* VsPodiel = new FilterUJVekovaSkupinaPodiel(vekKtorePodiel, VSMinimalnaPodiel, VSMaximalnaPodiel);
+			filtre->pridajFilter(VsPodiel);
 		}
-		*/
+		
 
 		//finalny vypis
 		system("cls");
@@ -775,8 +779,6 @@ public:
 			}
 		}
 		delete filtre;
-
-
 		return vyfiltrovane;
 	}
 

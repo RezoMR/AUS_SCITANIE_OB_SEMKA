@@ -17,7 +17,9 @@ public:
 	{
 		cout << "nacitavanie udajov" << "\n";
 
-
+		KriteriumUJVekovaSkupinaPodiel* KVekPodiel = nullptr;
+		KriteriumUJVekovaSkupinaPocet* KVekPocet = nullptr;
+		KriteriumUJVzdelaniePodiel* KVZPodiel = nullptr;
 		KriteriumUJVzdelaniePocet* KVZPocet = nullptr;
 		KriteriumUJNazov* KNazov = new KriteriumUJNazov();
 
@@ -78,6 +80,7 @@ public:
 		cout << "zaciatok priradovania veku a vzdelania obciam" << "\n";
 		int i = 0;
 		for (structures::TableItem<std::string, UzemnaJednotka*>* item : *obce) {
+			item->accessData()->setKod(item->getKey());
 			if (veky->containsKey(item->getKey())) {
 				item->accessData()->setVek(veky->find(item->getKey()));
 			}
@@ -107,8 +110,10 @@ public:
 
 		cout << "zaciatok prepajania a priradovania okresov krajom" << "\n";
 		for (structures::TableItem<std::string, UzemnaJednotka*>* kraj : *kraje) {
+			kraj->accessData()->setKod(kraj->getKey());
 			string kod = kraj->getKey().substr(7, 8);
 			for (structures::TableItem<std::string, UzemnaJednotka*>* okres : *okresy) {
+				okres->accessData()->setKod(okres->getKey());
 				string kodOkres = okres->getKey().substr(2, 3);
 				int vys = kodOkres.compare(kod);
 				if (vys == 0) {
@@ -141,27 +146,17 @@ public:
 			vsetko->insert(kraj->getKey(), kraj->accessData());
 		}
 
-
-
 		for (structures::TableItem<std::string, UzemnaJednotka*>* okres : *okresy) {
-
 			string zadany = "";
 			zadany = okres->accessData()->getNazov();
-			//cout << zadany << "\n";
 			pomocnaBodoveVyh->insert(zadany, okres->accessData());
 		}
-		//cout << "#######################################" << "\n";
-		//cout << pomocnaBodoveVyh->find("Okres Ruzomberok")->getNazov() << "\n";
 
 		for (structures::TableItem<std::string, UzemnaJednotka*>* kraj : *kraje) {
 			string zadany = "";
 			zadany = kraj->accessData()->getNazov();
-			//cout << zadany << "\n";
 			pomocnaBodoveVyh->insert(zadany, kraj->accessData());
 		}
-	//	cout << "#######################################" << "\n";
-		//cout << pomocnaBodoveVyh->find("Zilinsky kraj")->getNazov() <<"\n";
-
 		//system("pause");
 		cout << "koniec kompletizacie" << "\n";
 		
@@ -191,6 +186,7 @@ public:
 				}
 				getline(cin, hladana);
 			}
+
 			if (duplicity->containsKey(hladana)) {
 				for (int i = 0; i < duplicity->find(hladana)->size(); i++)
 				{
@@ -214,7 +210,8 @@ public:
 			}
 			else {
 				string kod = pomocnaBodoveVyh->find(hladana)->getKod();
-				//cout << vsetko->find(kod) << "\n";
+				//UzemnaJednotka* u = pomocnaBodoveVyh->find(hladana);
+				//cout << kod << "\n";
 				switch (vsetko->find(kod)->getTyp()) {
 				case OBEC:
 					bodVyh->vyhladajObec(vsetko->find(kod));
@@ -251,19 +248,29 @@ public:
 			cout << "VekSkupinaPocet___________2" << "\n";
 			cout << "VzdelaniePocet_____3" << "\n";
 			cout << "VzdelaniePodiel____4 " << "\n";
+			cout << "VekSkupinaPodiel___________5" << "\n";
 
 			int vybranie = 0;
 			cin >> vybranie;
 			switch (vybranie) {
+
+
+			//triedenie podla nazvu
 			case 1:
 				size = tr->size();
+
 				t->sort(*tr, vybranySposob, *KNazov, 0, tr->size() - 1);
+
 				for (auto item : *tr) {
 
 					cout << item->accessData()->getNazov() << "\n";
+					cout << "________________________________________" << "\n";
 				}
 
 				break;
+
+
+			//triedenie podla pocet vekova skupina
 			case 2:
 				cout << "Vyberte podla ktorej vekovej skupiny: " << "\n";
 				cout << "PREDPRODUKTIVNY___1:" << "\n";
@@ -281,8 +288,8 @@ public:
 					vekKtorePocet = POPRODUKTIVNI;
 					break;
 				}
-				 //KriteriumUJVekovaSkupinaPocet* KVekSkup = new KriteriumUJVekovaSkupinaPocet(vekKtorePocet);
-			     //t->sort(tr, vyber, KVekSkup, 0, tr->size());
+				 KVekPocet = new KriteriumUJVekovaSkupinaPocet(vekKtorePocet);
+			     t->sort(*tr, vybranySposob, *KVekPocet, 0, tr->size()-1);
 
 				 for (auto item : *tr) {
 					KriteriumUJNazov* KNazov = new KriteriumUJNazov();
@@ -297,10 +304,13 @@ public:
 					 KVSpocet = new KriteriumUJVekovaSkupinaPocet(POPRODUKTIVNI);
 					 cout << "Poproduktivny: " << KVSpocet->evaluate(*item->accessData()) << "\n";
 					 delete KVSpocet;
+					 cout << "##################################################" << "\n";
 				 }
 
 				break;
 
+
+			//triedenie vzdelanie pocet
 			case 3:
 				cout << "Zadajte typ vzdelania:" << "\n";
 				cout << "Vyberte Vzdelanie:" << "\n";
@@ -394,8 +404,10 @@ public:
 					delete KVZPocet;
 					cout << "##################################################" << "\n";
 				}
-
 				break;
+
+
+				//triedenie podla vzdelanie podiel
 			case 4:
 				cout << "Zadajte typ vzdelania:" << "\n";
 				cout << "Vyberte Vzdelanie:" << "\n";
@@ -435,15 +447,107 @@ public:
 					vzdelanieKtorePocet = NEZISTENE;
 					break;
 				}
+				KVZPodiel = new KriteriumUJVzdelaniePodiel(vzdelanieKtorePocet);
+				t->sort(*tr, vyber, *KVZPodiel, 0, tr->size()-1);
 
-				//t->sort(tr, vyber, KriteriumUJVzdelaniePodiel(vzdelanieKtorePocet), 0, tr->size());
+				for (auto item : *tr) {
+
+					cout << item->accessData()->getNazov() << "\n";
+					KriteriumUJVzdelaniePodiel* KVZPocet = new KriteriumUJVzdelaniePodiel(BEZUKONCENEHO);
+					cout << "Bezukonceneho: " << KVZPocet->evaluate(*item->accessData()) << "\n";
+					delete KVZPocet;
+					cout << "\n";
+					KVZPocet = new KriteriumUJVzdelaniePodiel(ZAKLADNE);
+					cout << "Zakladne: " << KVZPocet->evaluate(*item->accessData()) << "\n";
+					delete KVZPocet;
+
+					cout << "\n";
+					KVZPocet = new KriteriumUJVzdelaniePodiel(UCNOVSKE);
+					cout << "Ucnovske: " << KVZPocet->evaluate(*item->accessData()) << "\n";
+					delete KVZPocet;
+
+					cout << "\n";
+					KVZPocet = new KriteriumUJVzdelaniePodiel(STREDNE);
+					cout << "Stredne: " << KVZPocet->evaluate(*item->accessData()) << "\n";
+					delete KVZPocet;
+
+					cout << "\n";
+					KVZPocet = new KriteriumUJVzdelaniePodiel(VYSSIE);
+					cout << "Vyssie: " << KVZPocet->evaluate(*item->accessData()) << "\n";
+					delete KVZPocet;
+
+					cout << "\n";
+					KVZPocet = new KriteriumUJVzdelaniePodiel(VYSOKOSKOLSKE);
+					cout << "Vysokoskolske: " << KVZPocet->evaluate(*item->accessData()) << "\n";
+					delete KVZPocet;
+
+					cout << "\n";
+					KVZPocet = new KriteriumUJVzdelaniePodiel(BEZVZDELANIA);
+					cout << "Bez Vzdelania: " << KVZPocet->evaluate(*item->accessData()) << "\n";
+					delete KVZPocet;
+
+					cout << "\n";
+					KVZPocet = new KriteriumUJVzdelaniePodiel(NEZISTENE);
+					cout << "Nezistene: " << KVZPocet->evaluate(*item->accessData()) << "\n";
+					delete KVZPocet;
+					cout << "##################################################" << "\n";
+				}
+
+
 				break;
+
+				//triedenie podla vekova skupina podiel
+			case 5:
+				//vekova skupina podiel
+				cout << "Vyberte podla ktorej vekovej skupiny: " << "\n";
+				cout << "PREDPRODUKTIVNY___1:" << "\n";
+				cout << "PRODUKTIVNY_______2:" << "\n";
+				cout << "POPRODUKTIVNY_____3:" << "\n";
+				cin >> hodnota;
+				switch (hodnota) {
+				case 1:
+					vekKtorePocet = PREDPRODUKTIVNI;
+					break;
+				case 2:
+					vekKtorePocet = PRODUKTIVNI;
+					break;
+				case 3:
+					vekKtorePocet = POPRODUKTIVNI;
+					break;
+				}
+				KVekPodiel = new KriteriumUJVekovaSkupinaPodiel(vekKtorePocet);
+				t->sort(*tr, vyber, *KVekPodiel, 0, tr->size()-1);
+
+				for (auto item : *tr) {
+					KriteriumUJNazov* KNazov = new KriteriumUJNazov();
+					cout << "Nazov: " << KNazov->evaluate(*item->accessData()) << "\n";
+					delete KNazov;
+					KriteriumUJVekovaSkupinaPodiel* KVSpocet = new KriteriumUJVekovaSkupinaPodiel(PREDPRODUKTIVNI);
+					cout << "Predproduktivny: " << KVSpocet->evaluate(*item->accessData()) << "\n";
+					delete KVSpocet;
+					KVSpocet = new KriteriumUJVekovaSkupinaPodiel(PRODUKTIVNI);
+					cout << "Produktivny: " << KVSpocet->evaluate(*item->accessData()) << "\n";
+					delete KVSpocet;
+					KVSpocet = new KriteriumUJVekovaSkupinaPodiel(POPRODUKTIVNI);
+					cout << "Poproduktivny: " << KVSpocet->evaluate(*item->accessData()) << "\n";
+					delete KVSpocet;
+					cout << "##################################################" << "\n";
+				}
+				break;
+
+
 			}
 			
 			delete tr;
 			break;
 		}
 
+
+
+
+		delete KVekPodiel;
+		delete KVekPocet;
+		delete KVZPodiel;
 		delete KNazov;
 		delete KVZPocet;
 		delete t;

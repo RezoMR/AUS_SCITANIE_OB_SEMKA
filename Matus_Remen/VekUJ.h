@@ -33,24 +33,8 @@ public:
 		delete VSmuzi;
 		delete VSzeny;
 	}
-	/*
-	//settery
-	void setMuzi(structures::Array<int>* a) {
-		muzi = a;
-	}
-	void setZeny(structures::Array<int>* a) {
-		zeny = a;
-	}
-	//settery EVS
-	void setVSMuzi(structures::Array<int>* a) {
-		VSmuzi = a;
-	}
-	void setVSZeny(structures::Array<int>* a) {
-		VSzeny = a;
-	}
-	//koniec settery
+	
 
-	*/
 	//pripocitanie, vyuzivam v priradovani 
 	void pripocitajVek(VekUJ* v) {
 		for (int i = 0; i < muzi->size(); i++) {
@@ -67,7 +51,6 @@ public:
 		}
 	}
 	//koniec pripocitaviana
-
 
 
 
