@@ -257,7 +257,7 @@ public:
 			switch (vybranie) {
 			case 1:
 				size = tr->size();
-				t->sort(*tr, true, *KNazov, 0, tr->size() - 1);
+				t->sort(*tr, vybranySposob, *KNazov, 0, tr->size() - 1);
 				for (auto item : *tr) {
 
 					cout << item->accessData()->getNazov() << "\n";

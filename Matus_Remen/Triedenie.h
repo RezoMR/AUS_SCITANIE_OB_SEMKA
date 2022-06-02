@@ -66,7 +66,7 @@ public:
 						lavy++;
 					}
 					while (krit.evaluate(*tabulka.getItemAtIndex(pravy).accessData()) < pivot) {
-						pravy++;
+						pravy--;
 					}
 					if (lavy <= pravy) {
 						tabulka.swap(lavy, pravy);
