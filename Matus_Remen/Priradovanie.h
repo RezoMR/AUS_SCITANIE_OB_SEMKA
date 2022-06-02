@@ -34,15 +34,6 @@ public:
 
 		UzemnaJednotka* Slovensko = new UzemnaJednotka("Slovensko");
 
-		for (structures::TableItem<std::string, UzemnaJednotka*>* okres : *okresy) {
-			pomocnaBodoveVyh->insert(okres->accessData()->getNazov(), okres->accessData());
-
-		}
-		for (structures::TableItem<std::string, UzemnaJednotka*>* kraj : *kraje) {
-			pomocnaBodoveVyh->insert(kraj->accessData()->getNazov(), kraj->accessData());
-
-		}
-
 
 		Triedenie* t = new Triedenie();
 		Filtrovanie* f = new Filtrovanie();
@@ -140,8 +131,26 @@ public:
 			vsetko->insert(kraj->getKey(), kraj->accessData());
 		}
 
-		cout << "koniec kompletizacie" << "\n";
 
+
+		for (structures::TableItem<std::string, UzemnaJednotka*>* okres : *okresy) {
+
+			string zadany = "";
+			zadany = okres->accessData()->getNazov();
+			cout << zadany << "\n";
+
+
+			pomocnaBodoveVyh->insert(zadany, okres->accessData());
+		}
+		cout << "#######################################" << "\n";
+		cout << pomocnaBodoveVyh->find("Okres Ruzomberok")->getNazov();
+		for (structures::TableItem<std::string, UzemnaJednotka*>* kraj : *kraje) {
+			pomocnaBodoveVyh->insert(kraj->accessData()->getNazov(), kraj->accessData());
+		}
+	
+		system("pause");
+		cout << "koniec kompletizacie" << "\n";
+		
 		system("cls");
 		
 		
@@ -154,6 +163,10 @@ public:
 		cin >> vyber;
 		string hladana = "";
 		int dupl;
+		int hodnta;
+		int hodnot = 0;
+		int hodnota = 0;
+		VZDELANIE_ENUM vzdelanieKtorePocet;
 		UzemnaJednotka uj;
 		switch (vyber) {
 		case 1:
@@ -230,7 +243,9 @@ public:
 			cin >> vybranie;
 			switch (vybranie) {
 			case 1:
-				t->sort(tr, vyber, KriteriumUJNazov(), 0, tr->size());
+				KriteriumUJNazov* KNazov = new KriteriumUJNazov();
+				int size = tr->size();
+				t->sort(tr, vyber, KNazov, 0, size);
 				break;
 			case 2:
 				EVS_ENUM vekKtorePocet;
@@ -238,8 +253,6 @@ public:
 				cout << "PREDPRODUKTIVNY___1:" << "\n";
 				cout << "PRODUKTIVNY_______2:" << "\n";
 				cout << "POPRODUKTIVNY_____3:" << "\n";
-
-				int hodnota = 0;
 				cin >> hodnota;
 				switch (hodnota) {
 				case 1:
@@ -252,11 +265,11 @@ public:
 					vekKtorePocet = POPRODUKTIVNI;
 					break;
 				}
-				t->sort(tr, vyber, KriteriumUJVekovaSkupinaPocet(vekKtorePocet), 0, tr->size())
+				 //KriteriumUJVekovaSkupinaPocet* KVekSkup = new KriteriumUJVekovaSkupinaPocet(vekKtorePocet);
+			     //t->sort(tr, vyber, KVekSkup, 0, tr->size());
 				break;
 
 			case 3:
-				VZDELANIE_ENUM vzdelanieKtorePocet;
 				cout << "Zadajte typ vzdelania:" << "\n";
 				cout << "Vyberte Vzdelanie:" << "\n";
 				cout << "BEZUKONCENEHO____1" << "\n";
@@ -267,9 +280,8 @@ public:
 				cout << "VYSOKOSKOLSKE____6" << "\n";
 				cout << "BEZVZDELANIA_____7" << "\n";
 				cout << "NEZISTENE________8" << "\n";
-				int hodnota = 0;
-				cin >> hodnota;
-				switch (hodnota) {
+				cin >> hodnot;
+				switch (hodnot) {
 				case 1:
 					vzdelanieKtorePocet = BEZUKONCENEHO;
 					break;
@@ -295,11 +307,10 @@ public:
 					vzdelanieKtorePocet = NEZISTENE;
 					break;
 				}
-
-				t->sort(tr, vyber, KriteriumUJVzdelaniePocet(vzdelanieKtorePocet), 0, tr->size());
+				//KriteriumUJVzdelaniePocet* KVZPocet = new KriteriumUJVzdelaniePocet(vzdelanieKtorePocet);
+				//t->sort(tr, vyber, KVZPocet, 0, tr->size());
 				break;
 			case 4:
-				VZDELANIE_ENUM vzdelanieKtorePocet;
 				cout << "Zadajte typ vzdelania:" << "\n";
 				cout << "Vyberte Vzdelanie:" << "\n";
 				cout << "BEZUKONCENEHO____1" << "\n";
@@ -310,9 +321,9 @@ public:
 				cout << "VYSOKOSKOLSKE____6" << "\n";
 				cout << "BEZVZDELANIA_____7" << "\n";
 				cout << "NEZISTENE________8" << "\n";
-				int hodnota = 0;
-				cin >> hodnota;
-				switch (hodnota) {
+				
+				cin >> hodnta;
+				switch (hodnta) {
 				case 1:
 					vzdelanieKtorePocet = BEZUKONCENEHO;
 					break;
@@ -339,7 +350,7 @@ public:
 					break;
 				}
 
-				t->sort(tr, vyber, KriteriumUJVzdelaniePodiel(vzdelanieKtorePocet), 0, tr->size());
+				//t->sort(tr, vyber, KriteriumUJVzdelaniePodiel(vzdelanieKtorePocet), 0, tr->size());
 				break;
 			}
 			
